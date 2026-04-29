@@ -9,3 +9,9 @@ plotly
 pysus
 jupyter
 ipykernel
+pyathena
+boto3
+geopandas
+folium
+streamlit-folium
+shapely
