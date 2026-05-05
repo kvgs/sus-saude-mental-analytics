@@ -1,4 +1,14 @@
-streamlit
-pandas
 numpy
+pandas
+matplotlib
+seaborn
+scipy
+statsmodels
+streamlit
 plotly
+folium
+streamlit-folium
+pyathena[pandas]
+boto3
+lifelines
+scikit-learn
