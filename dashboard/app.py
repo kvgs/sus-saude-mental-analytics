@@ -183,13 +183,22 @@ TEMPLATE = dict(
     plot_bgcolor='rgba(0,0,0,0)',
     font=dict(family='DM Sans', color='#444'),
     margin=dict(l=10, r=10, t=30, b=10),
-    xaxis=dict(gridcolor='#f0f0f0', showline=False, tickfont=dict(size=11)),
-    yaxis=dict(gridcolor='#f0f0f0', showline=False, tickfont=dict(size=11)),
 )
+
+AXIS = dict(gridcolor='#f0f0f0', showline=False, tickfont=dict(size=11))
 
 
 def apply_template(fig):
-    fig.update_layout(**TEMPLATE)
+    fig.update_layout()
+    fig.update_xaxes(**AXIS)
+    fig.update_yaxes(**AXIS)
+    return fig
+
+
+def fmt(fig, height=280, **kwargs):
+    fig.update_layout(height=height, **kwargs)
+    fig.update_xaxes(**AXIS)
+    fig.update_yaxes(**AXIS)
     return fig
 
 
@@ -248,8 +257,10 @@ with tab1:
                         name='Tendência', hoverinfo='skip')
         fig.add_vrect(x0=2019.5, x1=2021.5, fillcolor='#E24B4A', opacity=0.08,
                       layer='below', line_width=0)
-        fig.update_layout(**TEMPLATE, height=280, showlegend=False,
+        fig.update_layout(height=280, showlegend=False,
                           yaxis=dict(gridcolor='#f0f0f0', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>Tendência secular:</b> -3.319 internações/ano (r=-0.99, p&lt;0.001). Pandemia causou queda adicional de 26.466 internações em 2020–2021 (DiD, p=0.019).</div>', unsafe_allow_html=True)
 
@@ -266,7 +277,7 @@ with tab1:
                         marker=dict(size=6),
                         hovertemplate='%{x}: %{y:.1f}M<extra></extra>',
                         secondary_y=True)
-        fig.update_layout(**TEMPLATE, height=280,
+        fig.update_layout(height=280,
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)))
         fig.update_yaxes(title_text='Suicídios', secondary_y=False,
                          gridcolor='#f0f0f0', tickformat=',.0f')
@@ -284,8 +295,10 @@ with tab1:
                         marker=dict(size=7, color='#534AB7'),
                         fill='tozeroy', fillcolor='rgba(83,74,183,0.08)',
                         hovertemplate='%{x}: %{y:.1f} dias<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=220,
+        fig.update_layout(height=220,
                           yaxis=dict(gridcolor='#f0f0f0', range=[13, 23]))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>r=-0.991, p&lt;0.001.</b> Queda de 0,65 dias/ano há 11 anos — Lei 10.216/2001 (Reforma Psiquiátrica) produzindo efeito mensurável.</div>', unsafe_allow_html=True)
 
@@ -300,9 +313,11 @@ with tab1:
                         line=dict(color='#E24B4A', width=2),
                         marker=dict(size=6),
                         hovertemplate='%{x}: %{y:,.0f}<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=220,
+        fig.update_layout(height=220,
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>Atenção:</b> crescimento reflete expansão do registro, não só aumento real. Tentativas de suicídio crescem de 2,5k (2015) para 29,7k (2025).</div>', unsafe_allow_html=True)
 
@@ -323,9 +338,11 @@ with tab2:
                         line=dict(color='#D85A30', width=2),
                         fillcolor='rgba(216,90,48,0.15)',
                         hovertemplate='%{x}: %{y:.1f}%<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=280,
+        fig.update_layout(height=280,
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', range=[0, 100], ticksuffix='%'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>Proporção feminina cresce:</b> r=0.873, p&lt;0.001. De 37,2% (2015) para 38,6% (2025). Gap de gênero está diminuindo.</div>', unsafe_allow_html=True)
 
@@ -337,8 +354,10 @@ with tab2:
                     orientation='h', marker_color=cores_sexo,
                     hovertemplate='%{y}: %{x:+.1f}pp<extra></extra>')
         fig.add_vline(x=0, line_color='#ccc', line_width=1)
-        fig.update_layout(**TEMPLATE, height=280,
+        fig.update_layout(height=280,
                           xaxis=dict(gridcolor='#f0f0f0', ticksuffix='pp'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>χ²=68.603, p&lt;0.001.</b> Laranja = mais feminino. Azul = mais masculino. Múltiplas drogas + álcool = 42,7% das internações masculinas.</div>', unsafe_allow_html=True)
 
@@ -354,8 +373,10 @@ with tab2:
                     textposition='outside',
                     hovertemplate='%{x}: %{y:.2f}x<extra></extra>')
         fig.add_hline(y=1, line_dash='dash', line_color='#ccc')
-        fig.update_layout(**TEMPLATE, height=220,
+        fig.update_layout(height=220,
                           yaxis=dict(gridcolor='#f0f0f0', range=[0, 4.5]))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>Suicídio tem maior gap</b> (3,60x). Homens chegam em crise mais tarde e mais grave.</div>', unsafe_allow_html=True)
 
@@ -368,9 +389,11 @@ with tab2:
         fig.add_bar(x=ANOS_SUC, y=SUC_FEM, name='Feminino',
                     marker_color='#D85A30', opacity=0.85,
                     hovertemplate='%{x}: %{y:,.0f}<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=220, barmode='group',
+        fig.update_layout(height=220, barmode='group',
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Ambos crescem, mas masculino mais acelerado. Em 2022, pico de 2.295 (M) e 628 (F).</div>', unsafe_allow_html=True)
 
@@ -391,9 +414,11 @@ with tab3:
                         mode='lines+markers', line=dict(color='#2C2C2A', width=2),
                         marker=dict(size=6),
                         hovertemplate='%{x}: %{y:.1f}%<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=280,
+        fig.update_layout(height=280,
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', ticksuffix='%'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>χ²=6.903, p&lt;0.001.</b> Parda: +11,7pp em 11 anos. Branca: -10,8pp. Maior mudança na composição racial das internações psiquiátricas.</div>', unsafe_allow_html=True)
 
@@ -405,8 +430,10 @@ with tab3:
                     orientation='h', marker_color=cores_raca,
                     hovertemplate='%{y}: %{x:+.1f}pp<extra></extra>')
         fig.add_vline(x=0, line_color='#ccc', line_width=1)
-        fig.update_layout(**TEMPLATE, height=280,
+        fig.update_layout(height=280,
                           xaxis=dict(gridcolor='#f0f0f0', ticksuffix='pp'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>Vermelho = parda mais frequente.</b> Pardos internam mais por Psicose NE (+4,6pp) — possível acesso tardio e diagnóstico impreciso.</div>', unsafe_allow_html=True)
 
@@ -420,9 +447,11 @@ with tab3:
         fig.add_bar(x=ANOS_VIOL, y=VIT_MASC, name='Masculino',
                     marker_color='#185FA5', opacity=0.85,
                     hovertemplate='%{x}: %{y:,.0f}<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=220, barmode='group',
+        fig.update_layout(height=220, barmode='group',
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">70,6% das vítimas são femininas. Pico em 2020 — pandemia e isolamento intensificaram violência doméstica.</div>', unsafe_allow_html=True)
 
@@ -437,9 +466,11 @@ with tab3:
         fig.add_bar(name='Branca', x=diags, y=branca, marker_color='#185FA5', opacity=0.85)
         fig.add_bar(name='Parda', x=diags, y=parda, marker_color='#BA7517', opacity=0.85)
         fig.add_bar(name='Preta', x=diags, y=preta, marker_color='#2C2C2A', opacity=0.85)
-        fig.update_layout(**TEMPLATE, height=220, barmode='group',
+        fig.update_layout(height=220, barmode='group',
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', ticksuffix='%'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Depressão grave parda: taxa de óbito 2,8x maior que branca. Inequidade racial no desfecho clínico.</div>', unsafe_allow_html=True)
 
@@ -453,8 +484,10 @@ with tab4:
                     y=[DIAG_LABELS[i] for i in idx_ord],
                     orientation='h', marker_color='#185FA5',
                     hovertemplate='%{y}: %{x:,.0f}<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=300,
+        fig.update_layout(height=300,
                           xaxis=dict(gridcolor='#f0f0f0', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Esquizofrenia paranoide lidera com 149k internações. Múltiplas drogas em 2º com 134k — transtornos por substâncias dominam o perfil masculino.</div>', unsafe_allow_html=True)
 
@@ -467,8 +500,10 @@ with tab4:
                     y=[DIAG_LABELS[i] for i in idx_dias],
                     orientation='h', marker_color=cores_dias,
                     hovertemplate='%{y}: %{x:.1f} dias<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=300,
+        fig.update_layout(height=300,
                           xaxis=dict(gridcolor='#f0f0f0', ticksuffix=' d'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>H=90.668, p&lt;0.001.</b> Esquizofrenia residual: 28,9d. Depressão grave: 11d. Crônicos ficam 2,6x mais que agudos.</div>', unsafe_allow_html=True)
 
@@ -486,8 +521,10 @@ with tab4:
         fig.add_vline(x=media_ob, line_dash='dash', line_color='#888',
                       annotation_text=f'Média: {media_ob:.3f}%',
                       annotation_position='top right')
-        fig.update_layout(**TEMPLATE, height=220,
+        fig.update_layout(height=220,
                           xaxis=dict(gridcolor='#f0f0f0', ticksuffix='%'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Esquizofrenia residual: 0,429% — mais letal. Múltiplas drogas: 0,016% — baixa letalidade mas altíssimo volume.</div>', unsafe_allow_html=True)
 
@@ -502,9 +539,11 @@ with tab4:
                     marker_color='#1D9E75', opacity=0.85)
         fig.add_bar(x=ANOS_SUC, y=SUC_SALTO, name='Salto',
                     marker_color='#BA7517', opacity=0.85)
-        fig.update_layout(**TEMPLATE, height=220, barmode='stack',
+        fig.update_layout(height=220, barmode='stack',
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=10)),
                           yaxis=dict(gridcolor='#f0f0f0', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Enforcamento responde por ~60% dos casos em todos os anos. Crescimento consistente em todos os métodos de 2020 a 2022.</div>', unsafe_allow_html=True)
 
@@ -525,9 +564,11 @@ with tab5:
                         mode='lines+markers', line=dict(color='#2C2C2A', width=2),
                         marker=dict(size=6),
                         hovertemplate='%{x}: R$%{y:,.0f}<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=280,
+        fig.update_layout(height=280,
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', tickprefix='R$', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Em 2023: Branca R$3.900 vs Parda R$2.400 vs Preta R$2.600. Gap racial persistente ao longo de toda a série.</div>', unsafe_allow_html=True)
 
@@ -547,10 +588,12 @@ with tab5:
                     text=[f'R${v:,.0f}' for v in fem_2023],
                     textposition='outside',
                     hovertemplate='%{x} Fem: R$%{y:,.0f}<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=280, barmode='group',
+        fig.update_layout(height=280, barmode='group',
                           legend=dict(orientation='h', y=1.12, x=0, font=dict(size=11)),
                           yaxis=dict(gridcolor='#f0f0f0', range=[0, 5200],
                                      tickprefix='R$', tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box"><b>Pior combinação:</b> mulher parda — R$2.040/mês. <b>Melhor:</b> homem branco — R$4.402. Gap de 2,16x pela intersecção de raça e gênero.</div>', unsafe_allow_html=True)
 
@@ -564,8 +607,10 @@ with tab5:
                         marker=dict(size=7),
                         fill='tozeroy', fillcolor='rgba(186,117,23,0.1)',
                         hovertemplate='%{x}: %{y:.1f}%<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=220,
+        fig.update_layout(height=220,
                           yaxis=dict(gridcolor='#f0f0f0', ticksuffix='%', range=[0, 40]))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Queda de 33% (2018) para 17,6% (2025) — mudança no perfil dos usuários dos CAPS ou melhora nos serviços especializados em dependência.</div>', unsafe_allow_html=True)
 
@@ -577,9 +622,11 @@ with tab5:
                     text=[f'{v//1000}k' for v in CAPS_RUA],
                     textposition='outside',
                     hovertemplate='%{x}: %{y:,.0f}<extra></extra>')
-        fig.update_layout(**TEMPLATE, height=220,
+        fig.update_layout(height=220,
                           yaxis=dict(gridcolor='#f0f0f0', range=[0, 230000],
                                      tickformat=',.0f'))
+        fig.update_xaxes(**AXIS)
+        fig.update_yaxes(**AXIS)
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('<div class="insight-box">Pico de 198k atendimentos em 2024. Queda em 2025 pode refletir mudança de política ou subnotificação.</div>', unsafe_allow_html=True)
 
