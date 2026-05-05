@@ -5,7 +5,9 @@ import numpy as np
 import pandas as pd
 import os
 import sys
-sys.path.append(os.path.expanduser('~/sus-saude-mental-analytics'))
+
+# Funciona tanto localmente quanto no Streamlit Cloud
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from athena_client import query
 
 st.set_page_config(
