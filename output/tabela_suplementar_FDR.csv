@@ -1,0 +1,78 @@
+teste,p_raw,p_corrigido,significativo_raw,significativo_fdr,mudou
+T5_ztest_proporcao_sexo,0.0,0.0,True,True,False
+T5_chi2_diagnostico_sexo,0.0,0.0,True,True,False
+T5_OR_Múltiplas drogas,0.0,0.0,True,True,False
+T5_OR_Dependência álcool,0.0,0.0,True,True,False
+T5_OR_Demência NE,0.0,0.0,True,True,False
+T5_OR_Depressão grave,0.0,0.0,True,True,False
+T5_OR_Psicose NE,0.0,0.0,True,True,False
+T5_OR_Borderline,0.0,0.0,True,True,False
+T5_OR_Bipolar — mania grave,0.0,0.0,True,True,False
+T7_logrank_raca,0.0,0.0,True,True,False
+T7_logrank_sexo,0.0,0.0,True,True,False
+T6_chi2_pre_pos,0.0,0.0,True,True,False
+T7_cox_outros_cid,0.0,0.0,True,True,False
+T7_cox_humor,0.0,0.0,True,True,False
+T10_OR_Bipolar — mania grave,0.0,0.0,True,True,False
+T10_OR_Depressão grave,0.0,0.0,True,True,False
+T8_logit_fx_ge60,0.0,0.0,True,True,False
+T10_chi2_sexo_cid,0.0,0.0,True,True,False
+T9_chi2_raca_cid,0.0,0.0,True,True,False
+T8_logit_dias_c,0.0,0.0,True,True,False
+T10_OR_Dependência álcool,0.0,0.0,True,True,False
+T10_OR_Demência NE,0.0,0.0,True,True,False
+T10_OR_Borderline,0.0,0.0,True,True,False
+T7_cox_ano_c,0.0,0.0,True,True,False
+T7_cox_fx_ge60,0.0,0.0,True,True,False
+T7_cox_fx_4559,0.0,0.0,True,True,False
+T7_cox_fx_lt18,0.0,0.0,True,True,False
+T7_cox_fx_1829,0.0,0.0,True,True,False
+T7_cox_subst,0.0,0.0,True,True,False
+T7_cox_parda,0.0,0.0,True,True,False
+T10_OR_Psicose NE,0.0,0.0,True,True,False
+T10_OR_Múltiplas drogas,0.0,0.0,True,True,False
+T11_chi2_metodo_sexo,0.0,0.0,True,True,False
+T11_chi2_sexo_tent_obit,0.0,0.0,True,True,False
+T7_cox_fem,2.3305451953151966e-293,5.127199429693433e-293,True,True,False
+T8_logit_outros_cid,3.738659737925974e-72,7.996577772786112e-72,True,True,False
+T5_OR_Dependência cocaína,2.2195483495416337e-59,4.497505866176468e-59,True,True,False
+T10_OR_Dependência cocaína,2.2195483495416337e-59,4.497505866176468e-59,True,True,False
+T8_logit_fx_4559,8.362099123206934e-55,1.6509785448382922e-54,True,True,False
+T11_chi2_raca_tent_obit,2.4270590658974453e-43,4.6720887018525825e-43,True,True,False
+T4_ITS_mudanca_tendencia,6.564761434088242e-28,1.2328942205482797e-27,True,True,False
+T8_logit_humor,1.3408402979744522e-17,2.4582072129531626e-17,True,True,False
+T10_OR_Esquizofrenia paranoide,7.154006609310416e-10,1.2519511566293228e-09,True,True,False
+T5_OR_Esquizofrenia paranoide,7.154006609310416e-10,1.2519511566293228e-09,True,True,False
+T6_tendencia_branca,3.762571807085397e-09,6.298218024903817e-09,True,True,False
+T6_tendencia_parda,3.762571807085397e-09,6.298218024903817e-09,True,True,False
+T8_logit_fx_1829,4.177143405420743e-08,6.843405153561643e-08,True,True,False
+T8_logit_ano_c,9.373689225953707e-07,1.5036959799967405e-06,True,True,False
+T8_logit_subst,6.321685022064605e-06,9.93407646324438e-06,True,True,False
+T13_spearman_total,3.314396026200098e-05,5.004088117988384e-05,True,True,False
+T13_spearman_drogas,3.314396026200098e-05,5.004088117988384e-05,True,True,False
+T14_favela_suicidio,0.0001370689993015699,0.00020296755665809388,True,True,False
+T5_tendencia_prop_feminina,0.00045461505140964023,0.0006604784709158924,True,True,False
+T3_spearman_Psic,0.0006116938500931701,0.000872230119577298,True,True,False
+T8_logit_fem,0.0006318994804938358,0.0008846592726913701,True,True,False
+T3_spearman_Outr,0.0008066741521648989,0.001109176959226736,True,True,False
+T8_logit_fx_lt18,0.0009109912444004785,0.001230637295067313,True,True,False
+T6_tendencia_preta,0.0010451821458586875,0.0013875694005365334,True,True,False
+T8_logit_preta,0.00457528898716245,0.005901919464001775,True,True,False
+T4_ITS_tendencia_pre,0.004598898283637747,0.005901919464001775,True,True,False
+T12_spearman_feminino,0.006807187408935393,0.008592679188328282,True,True,False
+T3_spearman_Humo,0.020842853610945084,0.02588547948456083,True,True,False
+T12_spearman_masculino,0.0234488083456915,0.028211847540910086,True,True,False
+T12_spearman_taxa_total,0.0234488083456915,0.028211847540910086,True,True,False
+T5_OR_Outras esquizofrenias,0.036574250215898184,0.04266995858521455,True,True,False
+T10_OR_Outras esquizofrenias,0.036574250215898184,0.04266995858521455,True,True,False
+T7_cox_preta,0.08017489495042911,0.09214129718183645,False,False,False
+T5_OR_Esquizofrenia residual,0.08682704761720576,0.09689395168876586,False,False,False
+T10_OR_Esquizofrenia residual,0.08682704761720576,0.09689395168876586,False,False,False
+T4_ITS_mudanca_nivel,0.2838723017856315,0.31225953196419465,False,False,False
+T3_spearman_Subs,0.3258949410128415,0.3534353585632225,False,False,False
+T8_logit_parda,0.33787869006549576,0.36134248798671076,False,False,False
+T13_spearman_rua,0.6103444156452669,0.6437879452696651,False,False,False
+T3_efeito_pandemia,0.681957357141683,0.7096042770258053,False,False,False
+T3_tendencia_secular,0.7195918528867458,0.7387809689637257,False,False,False
+T3_tendencia_pre,0.7584601276467153,0.7684398661683827,False,False,False
+T3_tendencia_pos,0.928167017702213,0.928167017702213,False,False,False
